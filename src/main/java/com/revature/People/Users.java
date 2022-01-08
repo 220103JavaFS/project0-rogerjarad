@@ -6,7 +6,7 @@ public class Users {
     private int user;
     private String userName;
     private String pw;
-    private boolean emUser;
+    private boolean superUser;
 
     public Users(){
         super();
@@ -17,7 +17,7 @@ public class Users {
         this.userName = userName;
         this.pw = pw;
         this.user = user;
-        this.emUser = false;
+        this.superUser = false;
     }
 
     public Users(int user, String userName, String pw){
@@ -25,18 +25,18 @@ public class Users {
         this.user = user;
         this.userName = userName;
         this.pw = pw;
-        this.emUser = false;
+        this.superUser = false;
 
     }
 
-    public void setEm(int emUser) {
+    public void setSuper(int superUser) {
 
     }
-    public boolean isEmUser(){
-        return emUser;
+    public boolean isSuperUser(){
+        return superUser;
     }
-    public void setEmUser(boolean emUser){
-        this.emUser = emUser;
+    public void setSuperUser(boolean superUser){
+        this.superUser = superUser;
     }
     public int getUser(){
         return user;
