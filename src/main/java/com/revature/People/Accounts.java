@@ -1,5 +1,7 @@
 package com.revature.People;
 
+//Roger Gaulke
+
 public class Accounts {
     private int user;
     private int accounts;
