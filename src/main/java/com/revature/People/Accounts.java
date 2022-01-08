@@ -3,25 +3,25 @@ package com.revature.People;
 //Roger Gaulke
 
 public class Accounts {
-    private int user;
-    private int accounts;
+    private int userI;
+    private int accountsID;
     private int money;
 
     public Accounts(){
         super();
     }
 
-    public Accounts(int user, int money){
+    public Accounts(int userI, int money){
         super();
-        this.user = user;
+        this.userI = userI;
         this.money = money;
 
     }
-    public int getUser(){
-        return user;
+    public int getUserI(){
+        return userI;
     }
-    public void setUser(int user){
-        this.user = user;
+    public void setUserI(int userI){
+        this.userI = userI;
 
     }
     public int getMoney(){
@@ -30,14 +30,14 @@ public class Accounts {
     public void setMoney(int money){
         this.money = money;
     }
-    public int getAccounts(){
-        return accounts;
+    public int getAccountsID(){
+        return accountsID;
     }
-    public void setAccounts(int accounts){
-        this.accounts = accounts;
+    public void setAccountsID(int accountsID){
+        this.accountsID = accountsID;
     }
 
     public String toString(){
-        return "Account is= "+ accounts + " This is the user= " + user +" amount of money= " + money;
+        return "Account is= "+ accountsID + " This is the user= " + userI +" amount of money= " + money;
     }
 }

@@ -1,14 +1,14 @@
 package com.revature.AccountOptions;
 //Roger Gaulke
 
-import com.revature.People.Users;
+import com.revature.People.User;
 
 public interface Services {
 
-    Users registerUsers(String username, String pw);
-    Users registerSuper(String username, String pw, boolean superUser);
+    User registerUsers(String username, String pw);
+    User registerSuper(String username, String pw, boolean superUser);
     Boolean checkSuper();
-    Users login(String username, String password);
+    User login(String username, String password);
     void viewUser();
     void createUsers();
     void updateUsers();

@@ -67,7 +67,7 @@ The project will be evaluated out of 100 points split between two main catagorie
 * 10 pts: Ability for the application to logically address the use-case for which it was designed.  
 * 10 pts: Ability to mathematically manipulate values stored in an entity object.
 * 10 pts: Proper database schema achieving 3rd normal form. (E.g. Accounts have a proper relationship to their owning user.)
-* 10 pts: Login, register, update and logout functionality for users.  
+* 10 pts: Login, register, update and logout functionality for user.  
 * 5 pts: Proper use of DAO design pattern.  
 * 5 pts: Different user roles with different levels of access implemented correctly. 
 * 5 pts: Reasonable test coverage of the service layer and proper logging. 

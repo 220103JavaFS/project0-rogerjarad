@@ -2,17 +2,17 @@ package com.revature.People;
 
 //Roger Gaulke
 
-public class Users {
+public class User {
     private int user;
     private String userName;
     private String pw;
     private boolean superUser;
 
-    public Users(){
+    public User(){
         super();
     }
 
-    public Users(String userName, String pw){
+    public User(String userName, String pw){
         super();
         this.userName = userName;
         this.pw = pw;
@@ -20,7 +20,7 @@ public class Users {
         this.superUser = false;
     }
 
-    public Users(int user, String userName, String pw){
+    public User(int user, String userName, String pw){
         super();
         this.user = user;
         this.userName = userName;
