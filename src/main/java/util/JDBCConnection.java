@@ -14,7 +14,7 @@ public class JDBCConnection {
             if(conn == null)
             {
 
-                Class.forName("oracle.jdbc.driver.OracleDriver");
+                Class.forName("to be determined");
 
                 Properties props = new Properties();
                 FileInputStream input = new FileInputStream(JDBCConnection.class.getClassLoader().getResource("connection.properties").getFile());
