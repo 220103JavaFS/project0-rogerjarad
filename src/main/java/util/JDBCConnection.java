@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.Properties;
+//import org.mindrot.jbcrypt.BCrypt;
+
 
 public class JDBCConnection {
     private static Connection conn = null;
