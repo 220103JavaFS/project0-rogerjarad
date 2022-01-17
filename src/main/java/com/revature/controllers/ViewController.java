@@ -7,7 +7,7 @@ import io.javalin.http.Handler;
 
 import java.util.List;
 
-public class ViewController implements Controller {
+public class ViewController extends Controller {
 
     private ViewService viewService = new ViewService();
 

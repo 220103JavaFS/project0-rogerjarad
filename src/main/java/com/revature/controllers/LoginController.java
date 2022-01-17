@@ -1,13 +1,24 @@
 package com.revature.controllers;
 
+
 import com.revature.models.UserDTO;
 import com.revature.services.LoginService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class LoginController implements Controller{
+
+public class LoginController extends Controller{
+
+    private Logger log = LoggerFactory.getLogger(LoginController.class);
 
     LoginService loginService = new LoginService();
+
+    public LoginController()  {}
+
+
+//    private Handler
 
     private Handler loginAttempt = (ctx) -> {
         UserDTO userDTO = ctx.bodyAsClass(UserDTO.class);

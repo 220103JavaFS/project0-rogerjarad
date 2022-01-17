@@ -12,7 +12,7 @@ public class BankAccount {
     }
 
 
-    public BankAccount(int accountNumber, double Balance, ArrayList<PersonType> accountOwners) {
+    public BankAccount(int accountNumber, double Balance, ArrayList<Login> accountOwners) {
         this.accountNumber = accountNumber;
         this.deposit(Balance);
 

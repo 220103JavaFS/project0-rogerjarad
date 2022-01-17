@@ -1,8 +1,9 @@
 package com.revature;
 
-import com.revature.controllers.BankAccountController;
-import com.revature.controllers.Controller;
-import com.revature.controllers.LoginController;
+import com.revature.controllers.*;
+//import com.revature.controllers.BankAccountController;
+//import com.revature.controllers.LoginController;
+import com.revature.models.View;
 import io.javalin.Javalin;
 
 public class Driver {
@@ -20,6 +21,8 @@ public class Driver {
 //        }));
         configure(new BankAccountController());
         configure(new LoginController());
+        configure(new CustomerController());
+        configure(new ViewController());
         driver.start();
     }
 

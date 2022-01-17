@@ -1,11 +1,14 @@
 package com.revature.Connection;
 
-
+import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionUt {
+
+    private static ConnectionUt instance;
+    private Connection connect;
 
 
 
@@ -24,6 +27,34 @@ public class ConnectionUt {
 
         return DriverManager.getConnection(url, username, password);
     }
+    public static ConnectionUt getInstance() {
+        if (instance == null){
+            instance = new ConnectionUt();
+        }
+        return instance;
+    }
+
+    public ResultSet executeQuery(String q) throws SQLException {
+        ResultSet result = null;
+
+        getConnection();
+        try {
+
+            Statement statement = connect.createStatement();
+            result = statement.executeQuery(q);
+
+        } catch (SQLException e) {
+            System.out.println("Error at " + q);
+        }
+
+        closeConnection();
+
+        return result;
+    }
+
+    private void closeConnection() {
+    }
+
 
 
     public static void main(String[] args){
@@ -36,5 +67,19 @@ public class ConnectionUt {
             e.printStackTrace();
         }
     }
+    public boolean executeUpdate(String r){
+        try {
+            getConnection();
+            Statement statement = connect.createStatement();
+            statement.executeUpdate(r);
+
+
+        }catch (SQLException e){
+            System.out.println("Error: " + r);
+            return false;
+        }
+        return true;
+    }
+    public ConnectionUt(){}
 }
 

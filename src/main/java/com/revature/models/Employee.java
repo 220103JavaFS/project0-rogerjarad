@@ -1,6 +1,6 @@
 package com.revature.models;
 
-public class Employee extends PersonType{
+public class Employee extends Login {
 
     int employeeNumber;
     Customer employeeCustomer;
@@ -8,11 +8,12 @@ public class Employee extends PersonType{
     public Employee() {
     }
 
-    public Employee(int id, String firstName, String lastName, String email, int employeeNumber, Customer employeeCustomer) {
-        super(id, firstName, lastName, email);
+    public Employee(int id, String firstName, String lastName, String email, String password, LoginType loginType, int employeeNumber, Customer employeeCustomer) {
+        super(id, firstName, lastName, email, password, loginType);
         this.employeeNumber = employeeNumber;
         this.employeeCustomer = employeeCustomer;
     }
+
 
     public int getEmployeeNumber() {
         return employeeNumber;

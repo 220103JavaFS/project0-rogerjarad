@@ -1,11 +1,13 @@
 package com.revature.controllers;
 
+import com.revature.models.BankAccount;
 import com.revature.services.BankAccountService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
+import java.util.ArrayList;
 
 
-public class BankAccountController implements Controller{
+public class BankAccountController extends Controller{
 
     private BankAccountService bankAccountService = new BankAccountService();
     Handler getBankAccounts = (ctx) ->{

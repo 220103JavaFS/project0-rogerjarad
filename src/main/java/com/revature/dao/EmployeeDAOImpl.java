@@ -26,7 +26,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             while(result.next())
             {
                 Employee employee = new Employee();
-                employee.setId(result.getInt("customer_number"));
+                employee.setId(result.getInt("employee_number"));
                 employee.setFirstName(result.getString("employee_first_name"));
                 employee.setLastName(result.getString("employee_last_name"));
                 employee.setEmail(result.getString("employee_email"));
@@ -56,7 +56,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             {
                 Employee employee = new Employee();
                 employee.setEmployeeNumber(result.getInt("employee_number"));
-                employee.setId(result.getInt("customer_number"));
                 employee.setFirstName(result.getString("employee_first_name"));
                 employee.setLastName(result.getString("employee_last_name"));
                 employee.setEmail(result.getString("employee_email"));

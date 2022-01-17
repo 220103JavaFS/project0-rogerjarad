@@ -4,7 +4,7 @@ import com.revature.services.CustomerService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
 
-public class CustomerController implements Controller{
+public class CustomerController extends Controller{
 
     private CustomerService customerService = new CustomerService();
     Handler getCustomers = (ctx) ->{
