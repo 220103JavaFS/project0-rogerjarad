@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class LoginDAO extends DAO<Login>{
 
@@ -71,6 +72,7 @@ public class LoginDAO extends DAO<Login>{
         }
         return false;
     }
+    public ArrayList<Login> getAllLogin() { return objects; }
 
 
 }
