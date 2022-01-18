@@ -11,7 +11,7 @@ public class Driver {
         driver = Javalin.create();
 
 
-        configure(new LoginController());
+        configure(new LoginController(), new AccountController(), new BankController());
 
 
         driver.start();

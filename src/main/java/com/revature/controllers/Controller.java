@@ -1,6 +1,9 @@
 package com.revature.controllers;
+
 import io.javalin.Javalin;
 
-public abstract class Controller {
-    public abstract void addRoutes(Javalin app);
+
+public interface Controller
+{
+    void addRoutes(Javalin app);
 }

@@ -5,28 +5,38 @@ import java.util.Objects;
 public class Account {
 
 
-
+    private int id;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
-    private AccountType accountType;
+    private String accountType;
     private String bday;
-    int id;
 
-    public enum AccountType {
-        CUSTOMER, EMPLOYEE, MANAGER, WRONG
 
-    }
+//    public enum AccountType {
+//        CUSTOMER, EMPLOYEE, MANAGER, WRONG
+//
+//    }
 
     public Account() {}
 
-    public Account(String firstName, String lastName, String email, String password, String bday) {
+    public Account(int id, String firstName, String lastName, String email, String password, String accountType, String bday) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.accountType = accountType;
         this.bday = bday;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -61,14 +71,13 @@ public class Account {
         this.password = password;
     }
 
-    public AccountType getAccountType() {
+    public String getAccountType() {
         return accountType;
     }
 
-    public void setAccountType(AccountType accountType) {
+    public void setAccountType(String accountType) {
         this.accountType = accountType;
     }
-    public void setAccountType(String accountType) { this.accountType = stringToAccountType(accountType); }
 
     public String getBday() {
         return bday;
@@ -76,14 +85,6 @@ public class Account {
 
     public void setBday(String bday) {
         this.bday = bday;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     @Override
@@ -96,31 +97,31 @@ public class Account {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFirstName(), getLastName(), getEmail(), getPassword(), getAccountType(), getBday(), getId());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getPassword(), getAccountType(), getBday());
     }
-    private AccountType stringToAccountType(String t) {
-        switch (t){
-            case "CUSTOMER":
-                return AccountType.CUSTOMER;
-            case "EMPLOYEE":
-                return AccountType.EMPLOYEE;
-            case "MANAGER":
-                return AccountType.MANAGER;
-            default:
-                return AccountType.WRONG;
-        }
-    }
+//    private AccountType stringToAccountType(String t) {
+//        switch (t){
+//            case "CUSTOMER":
+//                return AccountType.CUSTOMER;
+//            case "EMPLOYEE":
+//                return AccountType.EMPLOYEE;
+//            case "MANAGER":
+//                return AccountType.MANAGER;
+//            default:
+//                return AccountType.WRONG;
+//        }
+//    }
 
     @Override
     public String toString() {
         return "Account{" +
-                "firstName='" + firstName + '\'' +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", accountType=" + accountType +
                 ", bday='" + bday + '\'' +
-                ", id=" + id +
                 '}';
     }
 }

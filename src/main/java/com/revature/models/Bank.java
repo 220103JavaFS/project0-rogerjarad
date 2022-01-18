@@ -1,18 +1,17 @@
 package com.revature.models;
-import java.util.ArrayList;
 
 public class Bank {
 
     int accountNumber;
-    double Balance;
+    double accountBalance;
 
 
     public Bank() {
     }
 
-    public Bank(int accountNumber, double balance) {
+    public Bank(int accountNumber, double accountBalance) {
         this.accountNumber = accountNumber;
-        Balance = balance;
+        this.accountBalance = accountBalance;
     }
 
     public int getAccountNumber() {
@@ -23,17 +22,17 @@ public class Bank {
         this.accountNumber = accountNumber;
     }
 
-    public double getBalance() {
-        return Balance;
+    public double getAccountBalance() {
+        return accountBalance;
     }
 
-    public void setBalance(double balance) {
-        Balance = balance;
+    public void setAccountBalance(double accountBalance) {
+        this.accountBalance = accountBalance;
     }
     public boolean deposit(double gold){
         if(gold > 0)
         {
-            Balance+= gold;
+            accountBalance += gold;
             return true;
         }
 
@@ -48,9 +47,9 @@ public class Bank {
     public boolean withdraw(double gold){
         if(gold > 0)
         {
-            if(gold < Balance)
+            if(gold < accountBalance)
             {
-                Balance-= gold;
+                accountBalance -= gold;
                 return true;
             }
 
@@ -73,7 +72,7 @@ public class Bank {
     public String toString() {
         return "Bank{" +
                 "accountNumber=" + accountNumber +
-                ", Balance=" + Balance +
+                ", Balance=" + accountBalance +
                 '}';
     }
 

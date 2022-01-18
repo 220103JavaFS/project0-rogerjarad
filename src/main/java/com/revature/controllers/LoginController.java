@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.revature.services.LoginService;
 
-public class LoginController extends Controller {
+public class LoginController implements Controller {
     private final Logger log = LoggerFactory.getLogger(LoginController.class);
 
     LoginService loginService = new LoginService();

@@ -2,7 +2,7 @@ package com.revature.dao;
 import java.util.ArrayList;
 
 public interface DAO<R> {
-    boolean save(R o);
+    boolean saveAccount(R o);
 
     boolean update(R o);
 
