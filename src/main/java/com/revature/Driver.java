@@ -1,7 +1,6 @@
 package com.revature;
 
 import com.revature.controllers.*;
-import com.revature.controllers.RegisterController;
 import io.javalin.Javalin;
 
 public class Driver {
@@ -12,14 +11,13 @@ public class Driver {
         driver = Javalin.create();
 
 
-        configure(new RegisterController(), (new LoginController()
-        ));
+        configure(new LoginController());
 
 
         driver.start();
     }
 
-    public static void configure(RegisterController registerController, Controller... controllers) {
+    public static void configure(Controller... controllers) {
 
         for (Controller c: controllers){
             c.addRoutes(driver);

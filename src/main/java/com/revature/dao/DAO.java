@@ -6,7 +6,6 @@ public interface DAO<R> {
 
     boolean update(R o);
 
-    boolean delete(int id);
 
     ArrayList<R> getAll();
 

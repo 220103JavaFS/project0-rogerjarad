@@ -1,21 +1,22 @@
 package com.revature.dao;
-import com.revature.models.People;
+import com.revature.models.Account;
+
+
 import java.util.ArrayList;
 
-public interface AccountDAO extends DAO<People> {
+public interface AccountDAO extends DAO<Account> {
 
-    People getByEmail(String email);
 
     @Override
-    ArrayList<People> getAll();
+    ArrayList<Account> getAll();
     @Override
-    People get(int id);
+    Account get(int id);
     @Override
-    boolean save(People a);
+    boolean save(Account a);
     @Override
-    boolean update(People o);
-    @Override
-    boolean delete(int id);
+    boolean update(Account a);
+
+    Account getByEmail(String email);
 
 
 }
