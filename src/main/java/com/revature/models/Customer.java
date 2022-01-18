@@ -1,26 +1,24 @@
 package com.revature.models;
-
-
 import java.util.ArrayList;
+import java.util.Objects;
 
-public class Customer extends Login {
+public class Customer extends People{
 
-    ArrayList<BankAccount> bankAccounts;
+
+    ArrayList<Bank> banks;
 
     public Customer() {
-        this.bankAccounts = new ArrayList<BankAccount>();
+        this.banks = new ArrayList<Bank>();
     }
 
-    public Customer(int id, String firstName, String lastName, String email, String password, LoginType loginType, ArrayList<BankAccount> bankAccounts) {
-        super(id, firstName, lastName, email, password, loginType);
-        this.bankAccounts = bankAccounts;
+    public Customer(int id, String firstName, String lastName, String email, String password, String bday, String roletype, ArrayList<Bank> banks) {
+        super(id, firstName, lastName, email, password, bday, roletype);
+        this.banks = banks;
     }
-
-
-
-    public boolean addAccount(BankAccount newAccount)
-    {
-        bankAccounts.add(newAccount);
+    public boolean addAccount(Bank newAccount){
+        banks.add(newAccount);
         return true;
     }
+
+
 }

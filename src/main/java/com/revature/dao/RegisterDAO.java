@@ -1,7 +1,6 @@
 package com.revature.dao;
-
-import com.revature.models.Login;
+import com.revature.models.People;
 
 public interface RegisterDAO {
-    boolean register(Login login);
+    boolean register(People people);
 }

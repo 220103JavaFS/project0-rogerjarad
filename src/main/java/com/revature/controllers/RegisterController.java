@@ -1,28 +1,27 @@
 package com.revature.controllers;
-
+import com.revature.services.RegisterService;
+import com.revature.models.People;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
-import com.revature.models.Login;
-import com.revature.services.RegisterService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+public class RegisterController {
+    private final Logger log = LoggerFactory.getLogger(RegisterController.class);
 
-public class RegisterController extends Controller{
-
-    private RegisterService service = new RegisterService();
-
-    public RegisterController(){};
+    private RegisterService registerService = new RegisterService();
+    public RegisterController(){}
 
     private Handler register = (ctx) -> {
-        Login login = ctx.bodyAsClass(Login.class);
-        if(service.register(login)) {
+        People people = ctx.bodyAsClass(People.class);
+        if(registerService.register(people)) {
             ctx.status(200);
 
-        }else {
-            ctx.status(400)
+        }else{
+            ctx.status(400);
         }
     };
-    @Override
     public void addRoutes(Javalin app) {
-        app.post("/register", register, Role.MANAGER, Role.EMPLYEE);
+        app.post("/register", register, Role.Manager, Role.Employee); //Role.MANAGER, Role.EMPLOYEE
     }
 }

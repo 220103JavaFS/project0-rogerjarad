@@ -22,7 +22,7 @@ Possible examples include:
 *	Functionalities: 
   * Multi-tier Users - There must be at least three different types of user accounts each different functionality access. 
   * Basic mathematic manipulation of the fields of an entity object.
-  * User login with passwords and logout.
+  * User people with passwords and logout.
     * Passwords may not be stored in their raw form in the database. They must be encrypted somehow. 
     * Stretch Goal: User registration. 
   * Validation for invalid inputs. 
@@ -99,7 +99,7 @@ The project will be evaluated out of 100 points split between two main catagorie
     >A: Your trainer will be the one providing the full evaluation of your projects. However, the QC team will also be present at presentations to ask questions about your project and consult with your trainer. 
 
 6. Are we allowed to collaborate with others on our projects? 
-    >A: Collaboration is encouraged. Hopefully you will work together to solve the problems presented in this project. However, you should still be ultimately designing the project yourself. Straight copy/pasting of another login's code is considered plagiarism. NOTE: Code provided in demos by your trainer is not subject to plagiarism concerns. Feel free to copy/paste and edit such code as necessary to suit your projects. 
+    >A: Collaboration is encouraged. Hopefully you will work together to solve the problems presented in this project. However, you should still be ultimately designing the project yourself. Straight copy/pasting of another people's code is considered plagiarism. NOTE: Code provided in demos by your trainer is not subject to plagiarism concerns. Feel free to copy/paste and edit such code as necessary to suit your projects. 
 
 7. What is a passing score? 
     >A: 75% is the base expected passing score.

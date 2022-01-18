@@ -1,7 +1,5 @@
 package com.revature.controllers;
 
-
-import com.revature.models.Login;
 import com.revature.models.UserDTO;
 import com.revature.services.LoginService;
 import io.javalin.Javalin;
@@ -9,23 +7,10 @@ import io.javalin.http.Handler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayList;
-
-
 public class LoginController extends Controller{
+    private final Logger log = LoggerFactory.getLogger(LoginController.class);
 
-    private Logger log = LoggerFactory.getLogger(LoginController.class);
-
-    private LoginService loginService = new LoginService();
-
-    public LoginController()  {}
-
-
-    private Handler getAllLogin = ctx -> {
-        ArrayList<Login> list = loginService.getAllLogin();
-        ctx.json(list);
-        ctx.json(200);
-    };
+    LoginService loginService = new LoginService();
 
     private Handler loginAttempt = (ctx) -> {
         UserDTO userDTO = ctx.bodyAsClass(UserDTO.class);
@@ -41,12 +26,16 @@ public class LoginController extends Controller{
         }
     };
 
+    private Handler logout = (ctx) -> {
+        ctx.req.getSession().invalidate();
+        ctx.status(200);
+    };
 
 
 
     @Override
     public void addRoutes(Javalin app) {
         app.post("/login", this.loginAttempt);
+        app.post("/logout", logout);
     }
-
 }
