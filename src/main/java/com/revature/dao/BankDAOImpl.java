@@ -9,9 +9,9 @@ import com.revature.models.Bank;
 
 public class BankDAOImpl implements BankDAO {
     @Override
-    public Bank findByID(int id) {
+    public Bank findByID(int account_number) {
         try (Connection conn = ConnectionUt.getConnection()) {
-            String sql = "SELECT * FROM bank_account WHERE account_number = " + id + ";";
+            String sql = "SELECT * FROM bank_account WHERE account_number = " + account_number + ";";
             Statement statement = conn.createStatement();
             List<Bank> list = new ArrayList<>();
 

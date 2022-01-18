@@ -16,7 +16,7 @@ public class AccountDAOImpl implements AccountDAO{
     @Override
     public List<Account> getAll() {
         try (Connection conn = ConnectionUt.getConnection()) {
-            String sql = "SELECT * FROM account;";
+            String sql = "SELECT * FROM accounts;";
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(sql);
             List<Account> list = new ArrayList<>();
@@ -27,7 +27,7 @@ public class AccountDAOImpl implements AccountDAO{
                 account.setLastName(result.getString("last_name"));
                 account.setEmail(result.getString("email"));
                 account.setPassword(result.getString("password"));
-                account.setAccountType(result.getString("type"));
+                account.setAccountType(result.getString("account_Type"));
                 account.setBday(result.getString("bday"));
                 list.add(account);
 
@@ -52,8 +52,9 @@ public class AccountDAOImpl implements AccountDAO{
                 account.setLastName(result.getString("last_name"));
                 account.setEmail(result.getString("email"));
                 account.setPassword(result.getString("password"));
-                account.setAccountType(result.getString("type"));
+                account.setAccountType(result.getString("account_Type"));
                 account.setBday(result.getString("bday"));
+                System.out.println(account);
 
             }
             return account;
@@ -70,7 +71,7 @@ public class AccountDAOImpl implements AccountDAO{
     public boolean saveAccount(Account a) {
         try(Connection conn = ConnectionUt.getConnection()){
             String sql = "INSERT INTO  accounts (first_name, last_name, email, password," +
-                    " bday, type) VALUES (?,?,?,?,?,?);";
+                    " bday, account_Type) VALUES (?,?,?,?,?,?);";
 
             PreparedStatement statement = conn.prepareStatement(sql);
 
@@ -139,7 +140,7 @@ public class AccountDAOImpl implements AccountDAO{
                 account.setLastName(result.getString("last_name"));
                 account.setEmail(result.getString("email"));
                 account.setPassword(result.getString("password"));
-                account.setAccountType(result.getString("type"));
+                account.setAccountType(result.getString("account_Type"));
                 account.setBday(result.getString("bday"));
 
             }
