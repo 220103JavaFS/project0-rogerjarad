@@ -71,69 +71,27 @@ public class BankDAOImpl implements BankDAO {
         return false;
     }
 
-
-
-
     @Override
-    public Bank deposit(int account_balance) {
-        try(Connection conn = ConnectionUt.getConnection()){
-            String sql = "SELECT * FROM bank_account WHERE account_balance = " + account_balance + ";";
-            Statement statement = conn.createStatement();
-            List<Bank> list = new ArrayList<>();
-            ResultSet result = statement.executeQuery(sql);
-            Bank bank = new Bank();
-            if (result.next()) {
-                bank.setAccountBalance(result.getDouble("account_balance"));
-                list.add(bank);
-            }return bank;
+    public boolean update(Bank bank) {
+        try(Connection conn = ConnectionUt.getConnection()) {
+            String sql = "UPDATE bank_account SET account_balance = ? WHERE account_number = ?;";
+            PreparedStatement statement = conn.prepareStatement(sql);
+
+            int count = 1;
+            statement.setDouble(count++, bank.getAccountBalance());
+            statement.setInt(count++, bank.getAccountNumber());
 
 
+            statement.execute();
+            return true;
 
-//            String sql2 = "UPDATE bank_account SET account_balance = ? WHERE account_balance = ?;";
-//            PreparedStatement statements = conn.prepareStatement(sql2);
-//            ResultSet results = statements.executeQuery();
-//            Bank banks = new Bank();
-//            if(result.next()){
-//                bank.setAccountBalance(results.getDouble("account_balance"));
-//            }
-//
-//            return banks;
-
-
-
-
-
-
-
-
-
-
-
-        }catch (SQLException e){
+        }catch(SQLException e){
             e.printStackTrace();
+
         }
-        return new Bank();
+        return false;
     }
 
-    @Override
-    public Bank withdraw(double account_balance) {
-        try(Connection conn = ConnectionUt.getConnection()){
-            String sql = "SELECT * FROM bank_account WHERE account_balance = " + account_balance + ";";
-            Statement statement = conn.createStatement();
-            List<Bank> list = new ArrayList<>();
-            ResultSet result = statement.executeQuery(sql);
-            Bank bank = new Bank();
-            bank.setAccountBalance(result.getDouble("account_balance"));
-            list.add(bank);
 
-
-
-
-
-        }catch (SQLException e){
-            e.printStackTrace();
-        }
-        return null;
-    }
 }
 

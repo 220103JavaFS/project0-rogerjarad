@@ -10,11 +10,7 @@ public class BankService {
 
 
 
-//
-//    public boolean changeBank(Bank bank) {
-//        return BankDAO.change(bank);
-//
-//    }
+
 
     public Bank callId(int id) {
         return bankDAO.findByID(id);
@@ -22,13 +18,12 @@ public class BankService {
     public boolean addBank(Bank bank){
         return bankDAO.saveBank(bank);
     }
-    public Bank bankDeposit(int account_balance) {
-        return bankDAO.deposit(account_balance);
+
+    public boolean update(Bank bank){
+        return bankDAO.update(bank);
     }
 
-    public Bank bankWithdraw(double account_balance){
-        return bankDAO.withdraw(account_balance);
-    }
+
 
 
 

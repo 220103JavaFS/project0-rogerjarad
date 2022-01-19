@@ -2,8 +2,8 @@ package com.revature.services;
 import com.revature.dao.AccountDAO;
 import com.revature.dao.AccountDAOImpl;
 import com.revature.models.Account;
-import org.jetbrains.annotations.NotNull;
 
+import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class AccountService {
@@ -26,6 +26,9 @@ public class AccountService {
     public boolean updateAccount(Account account) {
         return accountDAO.update(account);
 
+    }
+    public Account getAccountByFirstName(String first_name){
+        return accountDAO.getAccountByFirstName(first_name);
     }
 
     public Account getAccountByEmail(String email) {

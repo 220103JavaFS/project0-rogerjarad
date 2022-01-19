@@ -94,21 +94,21 @@ public class AccountDAOImpl implements AccountDAO{
     }
 
     @Override
-    public boolean update(Account a) {
+    public boolean update(Account account) {
         try(Connection conn = ConnectionUt.getConnection()){
             String sql = "UPDATE accounts SET first_name = ?, last_name = ?, email = ?, password = ?," +
-                    " type = ?, bday = ? WHERE id = ?;";
+                    " account_type = ?, bday = ? WHERE first_name = ?;";
 
-            PreparedStatement statement = conn.prepareStatement(sql.toString());
+            PreparedStatement statement = conn.prepareStatement(sql);
 
             int count = 0;
-            statement.setInt(++count, a.getId());
-            statement.setString(++count, a.getFirstName());
-            statement.setString(++count, a.getLastName());
-            statement.setString(++count, a.getEmail());
-            statement.setString(++count, a.getPassword());
-            statement.setString(++count, a.getAccountType());
-            statement.setString(++count, a.getBday());
+            statement.setInt(++count, account.getId());
+            statement.setString(++count, account.getFirstName());
+            statement.setString(++count, account.getLastName());
+            statement.setString(++count, account.getEmail());
+            statement.setString(++count, account.getPassword());
+            statement.setString(++count, account.getAccountType());
+            statement.setString(++count, account.getBday());
 
 
             statement.execute();
@@ -152,6 +152,35 @@ public class AccountDAOImpl implements AccountDAO{
 
         return new Account();
 
+    }
+
+    @Override
+    public Account getAccountByFirstName(String First_name) {
+        try(Connection conn = ConnectionUt.getConnection()) {
+            String sql = "SELECT * FROM accounts WHERE first_name = " + First_name+";";
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(sql);
+            Account account = new Account();
+
+            if(result.next()) {
+                account.setId(result.getInt("id"));
+                account.setFirstName(result.getString("first_name"));
+                account.setLastName(result.getString("last_name"));
+                account.setEmail(result.getString("email"));
+                account.setPassword(result.getString("password"));
+                account.setAccountType(result.getString("account_Type"));
+                account.setBday(result.getString("bday"));
+                System.out.println(account);
+
+            }
+            return account;
+
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return new Account();
     }
 
 

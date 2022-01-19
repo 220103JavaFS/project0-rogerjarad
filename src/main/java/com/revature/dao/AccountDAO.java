@@ -14,9 +14,13 @@ public interface AccountDAO{
 
     public boolean saveAccount(Account a);
 
-    boolean update(Account a);
+    public boolean update(Account account);
 
     Account getByEmail(String email);
+
+    Account getAccountByFirstName(String First_name);
+
+
 
 
 }
