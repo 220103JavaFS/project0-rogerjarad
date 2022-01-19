@@ -22,6 +22,13 @@ public class BankService {
     public boolean addBank(Bank bank){
         return bankDAO.saveBank(bank);
     }
+    public Bank bankDeposit(int account_balance) {
+        return bankDAO.deposit(account_balance);
+    }
+
+    public Bank bankWithdraw(double account_balance){
+        return bankDAO.withdraw(account_balance);
+    }
 
 
 

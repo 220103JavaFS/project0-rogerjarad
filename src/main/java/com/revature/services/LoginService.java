@@ -1,17 +1,14 @@
 package com.revature.services;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 public class LoginService {
 
     public boolean login(String username, String password){
-        System.out.println("=================");
-        System.out.println("password" + password);
-        if(username.equals("agent") & password.equals("password"))
-        {
-            System.out.println("++++++++++++++++");
-            System.out.println(username + password);
+        if(username.equals("agent")&&password.equals("password")){
             return true;
-        }else {
+        }else{
             return false;
         }
     }
+
 }

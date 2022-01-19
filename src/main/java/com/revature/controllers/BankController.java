@@ -56,6 +56,20 @@ public class BankController implements Controller{
             ctx.status(401);
         }
     };
+    private final Handler bankDeposit = ctx -> {
+//        if (ctx.req.getSession(false) != null) {
+//            String depositString = ctx.pathParam("account_balance");
+//            int account_balance = Integer.parseInt(depositString);
+//            Bank bank = bankService.bankDeposit(account_balance);
+//            ctx.json(bank);
+//            ctx.status(200);
+//
+//        }else{
+//            ctx.status(400);
+//        }
+
+    };
+
 
 
 
@@ -64,6 +78,7 @@ public class BankController implements Controller{
       //  app.put("/bank", changeBank);
         app.get("/bank/{account_number}", callId);
         app.post("/create", addBank);
+        app.put("/deposit", bankDeposit);
 
     }
 }
