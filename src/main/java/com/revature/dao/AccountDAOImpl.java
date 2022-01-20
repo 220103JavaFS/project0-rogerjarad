@@ -97,18 +97,18 @@ public class AccountDAOImpl implements AccountDAO{
     public boolean update(Account account) {
         try(Connection conn = ConnectionUt.getConnection()){
             String sql = "UPDATE accounts SET first_name = ?, last_name = ?, username = ?, password = ?," +
-                    " account_type = ?, bday = ? WHERE id = ?;";
+                    " account_type = ? WHERE bday = ? ;";
 
             PreparedStatement statement = conn.prepareStatement(sql);
 
-            int count = 0;
-            statement.setInt(++count, account.getId());
-            statement.setString(++count, account.getFirstName());
-            statement.setString(++count, account.getLastName());
-            statement.setString(++count, account.getUsername());
-            statement.setString(++count, account.getPassword());
-            statement.setString(++count, account.getAccountType());
-            statement.setString(++count, account.getBday());
+            int count = 1;
+            //statement.setInt(count++, account.getId());
+            statement.setString(count++, account.getFirstName());
+            statement.setString(count++, account.getLastName());
+            statement.setString(count++, account.getUsername());
+            statement.setString(count++, account.getPassword());
+            statement.setString(count++, account.getAccountType());
+            statement.setString(count++, account.getBday());
 
 
             statement.execute();
