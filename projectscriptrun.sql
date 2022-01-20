@@ -1,10 +1,10 @@
 
 
-
+--Roger Gaulke script
 
 DROP TABLE IF EXISTS accounts; 
 DROP TABLE IF EXISTS bank_account; 
---CREATE EXTENSION pgcrypto;
+CREATE EXTENSION pgcrypto;
 
 
 
@@ -51,9 +51,11 @@ INSERT INTO bank_account(
 	VALUES ('1234', '50000'),('4332', '100000');
 
 
+
+
 CREATE PROCEDURE trade(
-	sender_id int,
-	reciever_id int,
+	sent int,
+	recive int,
 	amount double prescision
 )
 LANGUAGE plsgsql
