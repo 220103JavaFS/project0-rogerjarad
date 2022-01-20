@@ -9,6 +9,8 @@ public interface BankDAO {
     public boolean saveBank(Bank b);
     public boolean update(Bank bank);
     public boolean trade (TradeDTO tradeDTO);
+    boolean withdraw(TradeDTO tradeDTO);
+    boolean deposit(TradeDTO tradeDTO);
 
 
 }

@@ -112,6 +112,27 @@ public class BankDAOImpl implements BankDAO {
             return false;
         }
     }
+
+    @Override
+    public boolean withdraw(TradeDTO tradeDTO) {
+        Bank bank = this.findByID(tradeDTO.getSendid());
+        if(bank == null || bank.getAccountBalance()< tradeDTO.getAmount() || tradeDTO.getSend() != bank.getAccountNumber()){
+            return false;
+        }
+        bank.setAccountBalance(bank.getAccountBalance()-tradeDTO.getAmount());
+        return this.update(bank);
+
+    }
+
+    @Override
+    public boolean deposit(TradeDTO tradeDTO) {
+        Bank bank = this.findByID(tradeDTO.getSendid());
+        if(bank== null || tradeDTO.getSend() != bank.getAccountNumber()){
+            return false;
+        }
+        bank.setAccountBalance((bank.getAccountBalance()+tradeDTO.getAmount()));
+        return this.update(bank);
+    }
 }
 
 

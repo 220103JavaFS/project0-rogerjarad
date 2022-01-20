@@ -57,43 +57,62 @@ public class BankController implements Controller{
         }
     };
     Handler withdrawBank = (ctx) -> {
-        Bank bank = new Bank();
-        bank = ctx.bodyAsClass(Bank.class);
+        int accountnumber = 0;
+        try{
+            accountnumber = (Integer) ctx.req.getSession(false).getAttribute("account_number");
 
-        if(ctx.req.getSession(false) != null) {
-            double total = bankService.callId(bank.getAccountNumber()).getAccountBalance();
-            if(total >= bank.getAccountBalance()){
-                bank.setAccountBalance(total - bank.getAccountBalance());;
-                ctx.json(bankService.update(bank));
-                ctx.status(200);
-            }
-            else{
-                ctx.status(401);
-            }
-
-        }else{
-            ctx.status(402);
+        }catch (ClassCastException e){
+            e.printStackTrace();
+            ctx.status(401);
+            return;
         }
+        TradeDTO tradeDTO = ctx.bodyAsClass(TradeDTO.class);
+        tradeDTO.setSend(accountnumber);
+
+        if (bankService.withdraw(tradeDTO)){
+            ctx.status(200);
+        }else {
+            ctx.status(400);
+        }
+
+
+//        Bank bank = new Bank();
+//        bank = ctx.bodyAsClass(Bank.class);
+//
+//        if(ctx.req.getSession(false) != null) {
+//            double total = bankService.callId(bank.getAccountNumber()).getAccountBalance();
+//            if(total >= bank.getAccountBalance()){
+//                bank.setAccountBalance(total - bank.getAccountBalance());;
+//                ctx.json(bankService.update(bank));
+//                ctx.status(200);
+//            }
+//            else{
+//                ctx.status(401);
+//            }
+//
+//        }else{
+//            ctx.status(402);
+//        }
 
     };
 
     Handler depositBank = (ctx) -> {
-        Bank bank = new Bank();
-        bank = ctx.bodyAsClass(Bank.class);
+        int accountnumber = 0;
+        try{
+            accountnumber = (Integer) ctx.req.getSession(false).getAttribute("account_number");
 
-        if(ctx.req.getSession(false) != null) {
-            double total = bankService.callId(bank.getAccountNumber()).getAccountBalance();
-            if(total >= bank.getAccountBalance()){
-                bank.setAccountBalance(total + bank.getAccountBalance());;
-                ctx.json(bankService.update(bank));
-                ctx.status(200);
-            }
-            else{
-                ctx.status(401);
-            }
+        }catch (ClassCastException e){
+            e.printStackTrace();
+            ctx.status(401);
+            return;
+        }
+        TradeDTO tradeDTO = ctx.bodyAsClass(TradeDTO.class);
+        tradeDTO.setSend(accountnumber);
 
-        }else{
-            ctx.status(402);
+        if (bankService.deposit(tradeDTO)){
+            ctx.status(200);
+        }else {
+            ctx.status(400);
         }
 
     };

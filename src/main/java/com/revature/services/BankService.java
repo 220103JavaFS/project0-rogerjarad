@@ -28,6 +28,13 @@ public class BankService {
         return bankDAO.trade(tradeDTO);
     }
 
+    public boolean withdraw(TradeDTO tradeDTO){
+        return bankDAO.withdraw(tradeDTO);
+    }
+    public boolean deposit(TradeDTO tradeDTO){
+        return bankDAO.trade(tradeDTO);
+    }
+
 
 
 
