@@ -20,6 +20,8 @@ public interface AccountDAO{
 
     Account getAccountByFirstName(String First_name);
 
+    public Account deleteAccount(int id);
+
 
 
 

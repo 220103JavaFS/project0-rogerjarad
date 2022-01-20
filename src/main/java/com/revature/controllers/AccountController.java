@@ -109,6 +109,22 @@ public class AccountController implements Controller {
         }
     };
 
+    //    private final Handler deleteAccount = ctx -> {
+//        if (ctx.req.getSession(false) != null) {
+//            String idString = ctx.pathParam("id");
+//            int id = Integer.parseInt(idString);
+//            Account account = accountService.deleteAccount(id);
+//            ctx.json(account);
+//            ctx.status(200);
+//
+//        }else{
+//            ctx.status(400);
+//        }
+//
+//    };
+//
+//
+
 
 
 
@@ -126,7 +142,7 @@ public class AccountController implements Controller {
         app.get("/accounts", getAllAccounts);
         app.get("/account/{id}", getAccountById);
         app.get("/account/first/{first_name}", getAccountByFirstName);
-
+        //app.delete("/delete/{id", deleteAccount);
 
     }
 }

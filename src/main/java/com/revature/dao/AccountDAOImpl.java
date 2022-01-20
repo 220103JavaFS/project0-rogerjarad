@@ -157,6 +157,36 @@ public class AccountDAOImpl implements AccountDAO{
     }
 
 
+        @Override
+        public Account deleteAccount(int id) {
+            try(Connection conn = ConnectionUt.getConnection()) {
+                String sql = "DELETE * FROM accounts WHERE id = " + id+";";
+                Statement statement = conn.createStatement();
+                ResultSet result = statement.executeQuery(sql);
+                Account account = new Account();
+
+                if(result.next()) {
+                    account.setId(result.getInt("id"));
+                    account.setFirstName(result.getString("first_name"));
+                    account.setLastName(result.getString("last_name"));
+                    account.setUsername(result.getString("username"));
+                    account.setPassword(result.getString("password"));
+                    account.setAccountType(result.getString("account_Type"));
+                    account.setBday(result.getString("bday"));
+                    System.out.println(account);
+
+                }
+                return account;
+
+
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+
+            return new Account();
+        }
+
+
 }
 
 
