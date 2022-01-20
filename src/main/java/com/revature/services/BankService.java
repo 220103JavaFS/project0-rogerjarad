@@ -3,6 +3,7 @@ import com.revature.dao.BankDAO;
 import com.revature.dao.BankDAOImpl;
 import com.revature.models.Account;
 import com.revature.models.Bank;
+import com.revature.models.TradeDTO;
 
 public class BankService {
 
@@ -21,6 +22,10 @@ public class BankService {
 
     public boolean update(Bank bank){
         return bankDAO.update(bank);
+    }
+
+    public boolean trade(TradeDTO tradeDTO){
+        return bankDAO.trade(tradeDTO);
     }
 
 

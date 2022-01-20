@@ -1,11 +1,11 @@
 package com.revature.dao;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
 
 import com.revature.Connection.ConnectionUt;
 import com.revature.models.Bank;
+import com.revature.models.TradeDTO;
 
 public class BankDAOImpl implements BankDAO {
     @Override
@@ -92,6 +92,28 @@ public class BankDAOImpl implements BankDAO {
         return false;
     }
 
+    @Override
+    public boolean trade(TradeDTO tradeDTO) {
+        try(Connection conn = ConnectionUt.getConnection()) {
+            String sql = "CALL trade(?);";
 
+
+
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setInt(1, tradeDTO.send);
+            statement.setInt(2, tradeDTO.recieve);
+            statement.setDouble(3, tradeDTO.amount);
+            statement.execute();
+            return true;
+
+        }catch(SQLException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
+
+
+
 

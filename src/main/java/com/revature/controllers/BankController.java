@@ -1,5 +1,5 @@
 package com.revature.controllers;
-
+import com.revature.models.TradeDTO;
 import com.revature.services.BankService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
@@ -97,6 +97,17 @@ public class BankController implements Controller{
         }
 
     };
+    private final Handler trade = (ctx) ->{
+
+        TradeDTO tradeDTO = new TradeDTO();
+        tradeDTO = ctx.bodyAsClass(TradeDTO.class);
+        if(bankService.trade(tradeDTO)){
+            ctx.status(200);
+        }else{
+            ctx.status(401);
+        }
+
+    };
 
 
 
@@ -112,6 +123,7 @@ public class BankController implements Controller{
         app.put("/update", update);
         app.post("/deposit", depositBank);
         app.put("/withdraw", withdrawBank);
+        app.put("/trade", trade);
 
     }
 }

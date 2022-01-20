@@ -5,13 +5,16 @@ import java.util.Objects;
 public class Account {
 
 
+
     private int id;
     private String firstName;
     private String lastName;
-    private String email;
+    private String username;
     private String password;
     private String accountType;
     private String bday;
+
+
 
 
 //    public enum AccountType {
@@ -21,11 +24,11 @@ public class Account {
 
     public Account() {}
 
-    public Account(int id, String firstName, String lastName, String email, String password, String accountType, String bday) {
-        this.id = id;
+    public Account(String firstName, String lastName, String username, String password, String accountType, String bday) {
+
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.username = username;
         this.password = password;
         this.accountType = accountType;
         this.bday = bday;
@@ -55,12 +58,12 @@ public class Account {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -92,12 +95,12 @@ public class Account {
         if (this == o) return true;
         if (!(o instanceof Account)) return false;
         Account account = (Account) o;
-        return getId() == account.getId() && Objects.equals(getFirstName(), account.getFirstName()) && Objects.equals(getLastName(), account.getLastName()) && Objects.equals(getEmail(), account.getEmail()) && Objects.equals(getPassword(), account.getPassword()) && getAccountType() == account.getAccountType() && Objects.equals(getBday(), account.getBday());
+        return getId() == account.getId() && Objects.equals(getFirstName(), account.getFirstName()) && Objects.equals(getLastName(), account.getLastName()) && Objects.equals(getUsername(), account.getUsername()) && Objects.equals(getPassword(), account.getPassword()) && getAccountType() == account.getAccountType() && Objects.equals(getBday(), account.getBday());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getPassword(), getAccountType(), getBday());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getUsername(), getPassword(), getAccountType(), getBday());
     }
 //    private AccountType stringToAccountType(String t) {
 //        switch (t){
@@ -118,7 +121,7 @@ public class Account {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
+                ", email='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", accountType=" + accountType +
                 ", bday='" + bday + '\'' +

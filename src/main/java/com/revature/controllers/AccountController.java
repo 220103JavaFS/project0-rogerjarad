@@ -1,7 +1,5 @@
 package com.revature.controllers;
 
-
-import com.revature.models.Bank;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
 import com.revature.models.Account;
@@ -98,7 +96,7 @@ public class AccountController implements Controller {
             Account a = (Account) ctx.req.getSession().getAttribute("user");
 
             if (a != null) {
-                Account user = accountService.getAccountByEmail(a.getEmail());
+                Account user = accountService.getAccountByUsername(a.getUsername());
                 if (user != null) {
                     ctx.json(user);
                     ctx.status(200);

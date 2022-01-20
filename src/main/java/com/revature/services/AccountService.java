@@ -31,13 +31,13 @@ public class AccountService {
         return accountDAO.getAccountByFirstName(first_name);
     }
 
-    public Account getAccountByEmail(String email) {
-        if (!email.isEmpty() && validateEmail(email)) {
-            return accountDAO.getByEmail(email);
+    public Account getAccountByUsername(String username) {
+        if (!username.isEmpty() && validateUsername(username)) {
+            return accountDAO.getByUsername(username);
         }
         return null;
     }
-    private boolean validateEmail(@NotNull String e) {
+    private boolean validateUsername(@NotNull String e) {
         String regex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         return  e.matches(regex);
     }

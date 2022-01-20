@@ -25,7 +25,7 @@ public class AccountDAOImpl implements AccountDAO{
                 account.setId(result.getInt("id"));
                 account.setFirstName(result.getString("first_name"));
                 account.setLastName(result.getString("last_name"));
-                account.setEmail(result.getString("email"));
+                account.setUsername(result.getString("username"));
                 account.setPassword(result.getString("password"));
                 account.setAccountType(result.getString("account_Type"));
                 account.setBday(result.getString("bday"));
@@ -50,7 +50,7 @@ public class AccountDAOImpl implements AccountDAO{
                 account.setId(result.getInt("id"));
                 account.setFirstName(result.getString("first_name"));
                 account.setLastName(result.getString("last_name"));
-                account.setEmail(result.getString("email"));
+                account.setUsername(result.getString("username"));
                 account.setPassword(result.getString("password"));
                 account.setAccountType(result.getString("account_Type"));
                 account.setBday(result.getString("bday"));
@@ -70,7 +70,7 @@ public class AccountDAOImpl implements AccountDAO{
     @Override
     public boolean saveAccount(Account a) {
         try(Connection conn = ConnectionUt.getConnection()){
-            String sql = "INSERT INTO  accounts (first_name, last_name, email, password," +
+            String sql = "INSERT INTO  accounts (first_name, last_name, username, password," +
                     " bday, account_Type) VALUES (?,?,?,?,?,?);";
 
             PreparedStatement statement = conn.prepareStatement(sql);
@@ -78,7 +78,7 @@ public class AccountDAOImpl implements AccountDAO{
             int count = 0;
             statement.setString(++count, a.getFirstName());
             statement.setString(++count, a.getLastName());
-            statement.setString(++count, a.getEmail());
+            statement.setString(++count, a.getUsername());
             statement.setString(++count, a.getPassword());
             statement.setString(++count, a.getAccountType());
             statement.setString(++count, a.getBday());
@@ -96,8 +96,8 @@ public class AccountDAOImpl implements AccountDAO{
     @Override
     public boolean update(Account account) {
         try(Connection conn = ConnectionUt.getConnection()){
-            String sql = "UPDATE accounts SET first_name = ?, last_name = ?, email = ?, password = ?," +
-                    " account_type = ?, bday = ? WHERE first_name = ?;";
+            String sql = "UPDATE accounts SET first_name = ?, last_name = ?, username = ?, password = ?," +
+                    " account_type = ?, bday = ? WHERE id = ?;";
 
             PreparedStatement statement = conn.prepareStatement(sql);
 
@@ -105,7 +105,7 @@ public class AccountDAOImpl implements AccountDAO{
             statement.setInt(++count, account.getId());
             statement.setString(++count, account.getFirstName());
             statement.setString(++count, account.getLastName());
-            statement.setString(++count, account.getEmail());
+            statement.setString(++count, account.getUsername());
             statement.setString(++count, account.getPassword());
             statement.setString(++count, account.getAccountType());
             statement.setString(++count, account.getBday());
@@ -122,37 +122,10 @@ public class AccountDAOImpl implements AccountDAO{
     }
 
     @Override
-    public Account getByEmail(String email) {
-        try(Connection conn = ConnectionUt.getConnection()) {
-            String sql = "SELECT * FROM accounts WHERE email = ?;";
-
-            PreparedStatement statement = conn.prepareStatement(sql);
-
-            statement.setString(1, email);
-
-            ResultSet result = statement.executeQuery();
-            Account account = new Account();
-
-            if(result.next()) {
-
-                account.setId(result.getInt("id"));
-                account.setFirstName(result.getString("first_name"));
-                account.setLastName(result.getString("last_name"));
-                account.setEmail(result.getString("email"));
-                account.setPassword(result.getString("password"));
-                account.setAccountType(result.getString("account_Type"));
-                account.setBday(result.getString("bday"));
-
-            }
-            return account;
-
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
-
-        return new Account();
-
+    public Account getByUsername(String username) {
+        return null;
     }
+
 
     @Override
     public Account getAccountByFirstName(String First_name) {
@@ -166,7 +139,7 @@ public class AccountDAOImpl implements AccountDAO{
                 account.setId(result.getInt("id"));
                 account.setFirstName(result.getString("first_name"));
                 account.setLastName(result.getString("last_name"));
-                account.setEmail(result.getString("email"));
+                account.setUsername(result.getString("username"));
                 account.setPassword(result.getString("password"));
                 account.setAccountType(result.getString("account_Type"));
                 account.setBday(result.getString("bday"));
