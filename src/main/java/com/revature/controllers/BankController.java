@@ -25,6 +25,7 @@ public class BankController implements Controller{
             ctx.status(200);
         }else {
             ctx.status(401);
+            ctx.html("<h1> UPDATED </h1>");
         }
     };
 
@@ -36,8 +37,10 @@ public class BankController implements Controller{
             ctx.json(bank);
             ctx.status(200);
 
+
         }else{
             ctx.status(400);
+
         }
 
     };
@@ -45,10 +48,12 @@ public class BankController implements Controller{
         if (ctx.req.getSession(false) != null) {
             Bank bank = ctx.bodyAsClass(Bank.class);
             if(bankService.addBank(bank)){
+                ctx.html("<h1> ACCOUNT_ADDED </h1>");
                 ctx.status(201);
 
             }else {
                 ctx.status(400);
+                ctx.html("<h1> BANK_ACCOUNT_ADDED </h1>");
 
             }
 
@@ -70,9 +75,11 @@ public class BankController implements Controller{
         tradeDTO.setSend(accountnumber);
 
         if (bankService.withdraw(tradeDTO)){
+            ctx.html("<h1> WITHDRAW_COMPLETE </h1>");
             ctx.status(200);
         }else {
             ctx.status(400);
+            ctx.html("<h1> WITHDRAW_COMPLETE </h1>");
         }
 
 
@@ -110,9 +117,11 @@ public class BankController implements Controller{
         tradeDTO.setSend(accountnumber);
 
         if (bankService.deposit(tradeDTO)){
+            ctx.html("<h1> DEPOSIT_COMPLETE </h1>");
             ctx.status(200);
         }else {
             ctx.status(400);
+            ctx.html("<h1> DEPOSIT_COMPLETE </h1>");
         }
 
     };
@@ -122,8 +131,10 @@ public class BankController implements Controller{
         tradeDTO = ctx.bodyAsClass(TradeDTO.class);
         if(bankService.trade(tradeDTO)){
             ctx.status(200);
+            ctx.html("<h1> TRADE_COMPLETE </h1>");
         }else{
             ctx.status(401);
+            ctx.html("<h1> TRADE_COMPLETE </h1>");
         }
 
     };

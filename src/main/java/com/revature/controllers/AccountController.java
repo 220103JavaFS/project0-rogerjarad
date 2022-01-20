@@ -59,6 +59,7 @@ public class AccountController implements Controller {
 
         }else {
             ctx.status(401);
+            ctx.html("<h1> ACCOUNT_ADDED </h1>");
         }
     };
 

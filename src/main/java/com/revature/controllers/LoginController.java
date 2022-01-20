@@ -21,10 +21,12 @@ public class LoginController implements Controller {
         userDTO = loginService.Login(userDTO.username, toHexString(getSHA(userDTO.password)));
         if(userDTO != null){
             ctx.req.getSession().setAttribute("accountType", userDTO.accountType);
+            ctx.html("<h1> LOGGED_IN </h1>");
             ctx.status(200);
         }else {
             ctx.req.getSession().invalidate();
             ctx.status(401);
+            ctx.html("<h1> LOGGED_IN </h1>");
         }
 
 
